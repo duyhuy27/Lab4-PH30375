@@ -1,0 +1,458 @@
+{
+	"info": {
+		"_postman_id": "17cda581-67eb-4c7e-b97f-330a2f95b22b",
+		"name": "Lab3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31552223"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "addCustomers",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"abc\",\n    \"password\": \"abc123\",\n    \"email\": \"abc\",\n    \"name\" : \"Thuy Vy\", \n    \"avatar\" : \"image.jpg\",\n    \"status\" : \"onl\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1433/api/user/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1433",
+							"path": [
+								"api",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"huy111\",\n    \"password\": \"huy111\",\n    \"email\": \"huy.mobcontact@gmail.com\",\n    \"name\" : \"Thuy Vy\", \n    \"avatar\" : \"image.jpg\",\n    \"status\" : \"onl\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1433/api/user/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1433",
+							"path": [
+								"api",
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"huy111\",\n    \"password\": \"huy111\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1433/api/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1433",
+							"path": [
+								"api",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1433/api/user/getAll",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1433",
+							"path": [
+								"api",
+								"user",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateUser",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"abc\",\n    \"password\": \"abc123\",\n    \"email\": \"abc\",\n    \"name\" : \"Thuy Vy\", \n    \"avatar\" : \"https://vnn-imgs-f.vgcloud.vn/2019/06/01/14/tu-vu-be-9-tuoi-suyt-chet-vi-an-xoai-chuyen-gia-canh-bao-khong-an-xoai-neu-co-dau-hieu-sau.jpg\",\n    \"status\" : \"onl\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1433/api/user/update/65f33840c4344122615ec100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1433",
+							"path": [
+								"api",
+								"user",
+								"update",
+								"65f33840c4344122615ec100"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"name\": \"Nguyen duy huy update\",\n        \"email\": \"huy1@gmail.com\",\n        \"address\": \"Ha Noi\"    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1433/api/user/deleteUser/65f2fa07e71dacf975ebfb33",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1433",
+							"path": [
+								"api",
+								"user",
+								"deleteUser",
+								"65f2fa07e71dacf975ebfb33"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "distributor",
+			"item": [
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"TNHH Viet Nam abc1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1433/api/dis/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1433",
+							"path": [
+								"api",
+								"dis",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"TNHH Viet Nam abc1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1433/api/dis/delete/65f33bdd1f3d442fe2febaa1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1433",
+							"path": [
+								"api",
+								"dis",
+								"delete",
+								"65f33bdd1f3d442fe2febaa1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"TNHH Viet Nam update\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1433/api/dis/update/65f33bdd1f3d442fe2febaa1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1433",
+							"path": [
+								"api",
+								"dis",
+								"update",
+								"65f33bdd1f3d442fe2febaa1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"TNHH Viet Nam\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1433/api/dis/get",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1433",
+							"path": [
+								"api",
+								"dis",
+								"get"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "fruits",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"Xoai\", \n    \"quantity\" : 1, \n    \"price\" : 10000,\n    \"status\" : 1,\n    \"image\" : \"https://vnn-imgs-f.vgcloud.vn/2019/06/01/14/tu-vu-be-9-tuoi-suyt-chet-vi-an-xoai-chuyen-gia-canh-bao-khong-an-xoai-neu-co-dau-hieu-sau.jpg\",\n    \"des\" : \"xoai ngon lam\",\n    \"id_distributor\" : \"65f33a7845bef8f84039bbfb\" \n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1433/api/fr/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1433",
+							"path": [
+								"api",
+								"fr",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"Xoai ngon lam ne\", \n    \"quantity\" : 1, \n    \"price\" : 10000,\n    \"status\" : 1,\n    \"image\" : \"body.png\",\n    \"des\" : \"xoai ngon lam nhung update roi\",\n    \"id_distributor\" : \"65f33a7845bef8f84039bbfb\" \n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1433/api/fr/update/65f33fd5878d8afd87d94fb2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1433",
+							"path": [
+								"api",
+								"fr",
+								"update",
+								"65f33fd5878d8afd87d94fb2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"Xoai ngon lam ne\", \n    \"quantity\" : 1, \n    \"price\" : 10000,\n    \"status\" : 1,\n    \"image\" : \"body.png\",\n    \"des\" : \"xoai ngon lam nhung update roi\",\n    \"id_distributor\" : \"65f33a7845bef8f84039bbfb\" \n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1433/api/fr/delete/65f33fd5878d8afd87d94fb2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1433",
+							"path": [
+								"api",
+								"fr",
+								"delete",
+								"65f33fd5878d8afd87d94fb2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Zjc3MjJhZDBmOTAyNzQ4NGU1NGM5YiIsImlhdCI6MTcxMDcxNjY5NCwiZXhwIjoxNzEwODAzMDk0fQ.g1C1pU9zu63T62BXWAQBDrF8tWeskI9MSChiNV51Mz0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"Xoai\", \n    \"quantity\" : 1, \n    \"price\" : 10000,\n    \"status\" : 1,\n    \"image\" : \"body.png\",\n    \"des\" : \"xoai ngon lam\",\n    \"id_distributor\" : \"65f33a7845bef8f84039bbfb\" \n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1433/api/fr/getAll",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1433",
+							"path": [
+								"api",
+								"fr",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

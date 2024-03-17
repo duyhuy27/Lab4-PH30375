@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fruits Management</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <!-- Custom CSS -->
+    <link href="styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-3 bg-dark sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" href="/">Quay lại</a>
+              </li>
+              <!-- Add links for other management pages if needed -->
+            </ul>
+          </div>
+        </div>
+
+        <!-- Main Content -->
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-9 px-4">
+          <div
+            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+          >
+            <h1 class="h2">Quản lý Fruits</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+              <a href="/api/fr/add" class="btn btn-primary">Thêm Fruits mới</a>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Quantity</th>
+                  <th>Price</th>
+                  <th>Status</th>
+                  <th>Image</th>
+                  <th>Des</th>
+                  <th>ID - Distributor</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% fruits.forEach(element => { %>
+                <tr>
+                  <td><%= element.name %></td>
+                  <td><%= element.quantity %></td>
+                  <td><%= element.price %></td>
+                  <td>
+                    <% if (element.status === 1) { %> Còn hàng <% } else if
+                    (element.status === 0) { %> Hết hàng <% } else if
+                    (element.status === -1) { %> Ngừng kinh doanh <% } %>
+                  </td>
+                  <td>
+                    <img
+                      src="<%= element.image %>"
+                      alt="<%= element.name %>"
+                      class="img-fluid"
+                    />
+                  </td>
+                  <td><%= element.des %></td>
+                  <td><%= element.id_distributor %></td>
+                  <td>
+                    <a class="btn btn-sm btn-info">Sửa</a>
+                    <button
+                      onclick="deleteUser('<%= element._id %>')"
+                      class="btn btn-danger btn-small"
+                    >
+                      Xóa
+                    </button>
+                  </td>
+                </tr>
+                <% }) %>
+              </tbody>
+            </table>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script>
+      function deleteUser(userId) {
+        if (confirm("Bạn có chắc muốn xóa người dùng này không?")) {
+          fetch(`/api/fr/delete/${userId}`, {
+            method: "DELETE",
+          })
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error("Xóa người dùng không thành công");
+              }
+              window.location.reload(); // Reload trang sau khi xóa thành công
+            })
+            .catch((error) => {
+              console.error("Lỗi khi xóa người dùng:", error);
+              // Xử lý lỗi
+            });
+        }
+      }
+    </script>
+    <!-- Bootstrap JS and dependencies -->
+  </body>
+</html>

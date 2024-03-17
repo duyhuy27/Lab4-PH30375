@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Management</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <!-- Custom CSS -->
+    <link href="styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-3 bg-dark sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" href="/">Quay lại</a>
+              </li>
+              <!-- Add links for other management pages if needed -->
+            </ul>
+          </div>
+        </div>
+
+        <!-- Main Content -->
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-9 px-4">
+          <div
+            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+          >
+            <h1 class="h2">Quản lý User</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-toggle="modal"
+                data-target="#addUserModal"
+              >
+                Thêm User mới
+              </button>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Username</th>
+                  <th>Email</th>
+                  <th>Name</th>
+                  <th>Avatar</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% users.forEach(element => { %>
+                <tr>
+                  <td><%= element.username %></td>
+                  <td><%= element.email %></td>
+                  <td><%= element.name %></td>
+                  <td>
+                    <img
+                      src="<%= element.avatar %>"
+                      alt="<%= element.name %>"
+                      class="img-fluid"
+                    />
+                  </td>
+                  <td><%= element.status %></td>
+                  <td>
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-info"
+                      onclick="editUser('<%= element._id %>')"
+                    >
+                      Sửa
+                    </button>
+                    <button
+                      onclick="deleteUser('<%= element._id %>')"
+                      class="btn btn-danger btn-small"
+                    >
+                      Xóa
+                    </button>
+                  </td>
+                </tr>
+                <% }) %>
+              </tbody>
+            </table>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Modal for adding user -->
+    <div
+      class="modal fade"
+      id="addUserModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="addUserModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addUserModalLabel">Thêm User mới</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!-- Your form for adding user goes here -->
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Đóng
+            </button>
+            <button type="button" class="btn btn-primary">Lưu</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+      integrity="sha384-MG6eN30XipTo7Gzv+fsBOmYjAex4B9Rxdx5u7veDfG+fsI9qo5poWd2bqO8g7JbB"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shCk5KV+J+6m/AhoAVeLvG+POpOuJfW/tJfWs"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      function deleteUser(userId) {
+        if (confirm("Bạn có chắc muốn xóa người dùng này không?")) {
+          fetch(`/api/user/deleteUser/${userId}`, {
+            method: "DELETE",
+          })
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error("Xóa người dùng không thành công");
+              }
+              window.location.reload(); // Reload trang sau khi xóa thành công
+            })
+            .catch((error) => {
+              console.error("Lỗi khi xóa người dùng:", error);
+              // Xử lý lỗi
+            });
+        }
+      }
+
+      function editUser(userId) {
+        // Add your logic here to fetch user details and populate the edit modal
+        // Example:
+        // fetch(`/api/user/getUser/${userId}`)
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         // Populate the edit modal with user details
+        //         document.getElementById('editUserId').value = data._id;
+        //         document.getElementById('editUsername').value = data.username;
+        //         document.getElementById('editEmail').value = data.email;
+        //         // Populate other fields as needed
+        //     })
+        //     .catch(error => console.error("Lỗi khi lấy thông tin người dùng:", error));
+
+        // Show the edit modal
+        $("#editUserModal").modal("show");
+      }
+    </script>
+  </body>
+</html>
